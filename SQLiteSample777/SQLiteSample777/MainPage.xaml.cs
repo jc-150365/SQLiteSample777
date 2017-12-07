@@ -154,7 +154,7 @@ namespace SQLiteSample777
         {
             //UserModel008.deleteUser(1);
             //入力されたIDをもとにその行を削除する
-            UserModel008.insertUser(int.Parse(DeleteEntry.Text));
+            UserModel008.deleteUser(int.Parse(DeleteEntry.Text));
 
             var layout = new StackLayout { HorizontalOptions = LayoutOptions.Center, Margin = new Thickness { Top = 100 } };
 
