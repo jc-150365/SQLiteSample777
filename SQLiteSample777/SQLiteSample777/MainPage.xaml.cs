@@ -197,7 +197,7 @@ namespace SQLiteSample777
             layout.Children.Add(Select);
             Select.Clicked += SelectClicked;
 
-            /************セレクトかける************************/
+            /************セレクトかける*************************/
             var query = UserModel008.selectUser();
 
             foreach (var user in query)
