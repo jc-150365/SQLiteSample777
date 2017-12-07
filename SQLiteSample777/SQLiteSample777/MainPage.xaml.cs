@@ -32,7 +32,7 @@ namespace SQLiteSample777
             layout.Children.Add(Insert);
             Insert.Clicked += InsertClicked;
 
-            //-----------------------------インサートするテキストボックス-------------------
+            //-----------------------------デリートするテキストボックス-------------------
             DeleteEntry = new Entry
             {
                 WidthRequest = 60
@@ -116,6 +116,13 @@ namespace SQLiteSample777
             layout.Children.Add(Insert);
             Insert.Clicked += InsertClicked;
 
+            //-----------------------------デリートするテキストボックス-------------------
+            DeleteEntry = new Entry
+            {
+                WidthRequest = 60
+            };
+            layout.Children.Add(DeleteEntry);
+
             //--------------------------------デリートボタン-------------------------------
             var Delete = new Button
             {
@@ -176,6 +183,13 @@ namespace SQLiteSample777
             };
             layout.Children.Add(Insert);
             Insert.Clicked += InsertClicked;
+
+            //-----------------------------デリートするテキストボックス-------------------
+            DeleteEntry = new Entry
+            {
+                WidthRequest = 60
+            };
+            layout.Children.Add(DeleteEntry);
 
             //--------------------------------デリートボタン-------------------------------
             var Delete = new Button
