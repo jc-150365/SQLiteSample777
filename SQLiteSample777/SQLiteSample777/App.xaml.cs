@@ -1,19 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace SQLiteSample777
 {
     public partial class App : Application
     {
-        public App()
+        //データベースのパスを格納
+        public static string dbPath;
+
+        //コンストラクタの引数にstring型の引数を追加
+        public App(string dbPath)
         {
+            //AppのdbPathに引数のパスを設定
+            App.dbPath = dbPath;
+
             InitializeComponent();
 
-            MainPage = new SQLiteSample777.MainPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
