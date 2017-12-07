@@ -5,7 +5,8 @@ namespace SQLiteSample777
 {
     public partial class MainPage : ContentPage
     {
-        private Entry InsertEntry; //テキストボックスの値を保持する
+        private Entry InsertEntry; //インサートのテキストボックスの値を保持する
+        private Entry DeleteEntry; //デリートのテキストボックスの値を保持する
 
         public MainPage()
         {
@@ -30,6 +31,13 @@ namespace SQLiteSample777
             };
             layout.Children.Add(Insert);
             Insert.Clicked += InsertClicked;
+
+            //-----------------------------インサートするテキストボックス-------------------
+            DeleteEntry = new Entry
+            {
+                WidthRequest = 60
+            };
+            layout.Children.Add(DeleteEntry);
 
             //--------------------------------デリートボタン------------------------------
             var Delete = new Button
@@ -66,6 +74,7 @@ namespace SQLiteSample777
             Content = layout;
         }
 
+        /**********************セレクトボタンが押されたら**************************************/
         public void SelectClicked(object sender, EventArgs e)
         {
             //Userテーブルの行データを取得
@@ -143,7 +152,62 @@ namespace SQLiteSample777
         /********************************デリートボタンが押されたら***********************************************************************/
         public void DeleteClicked(object sender, EventArgs e)
         {
-            UserModel008.deleteUser(1);
+            //UserModel008.deleteUser(1);
+            //入力されたIDをもとにその行を削除する
+            UserModel008.insertUser(int.Parse(DeleteEntry.Text));
+
+            var layout = new StackLayout { HorizontalOptions = LayoutOptions.Center, Margin = new Thickness { Top = 100 } };
+
+            //ボタン再配置（見かけ上消えないようにする）
+            //-----------------------------インサートするテキストボックス-------------------
+            InsertEntry = new Entry
+            {
+                WidthRequest = 60
+            };
+            layout.Children.Add(InsertEntry);
+
+
+            //-------------------------------インサートボタン-------------------------------
+            var Insert = new Button
+            {
+                WidthRequest = 60,
+                Text = "INSERT",
+                TextColor = Color.Blue,
+            };
+            layout.Children.Add(Insert);
+            Insert.Clicked += InsertClicked;
+
+            //--------------------------------デリートボタン-------------------------------
+            var Delete = new Button
+            {
+                WidthRequest = 60,
+                Text = "DELETE",
+                TextColor = Color.Blue,
+            };
+            layout.Children.Add(Delete);
+            Delete.Clicked += DeleteClicked;
+
+            //--------------------------------セレクトボタン--------------------------------
+            var Select = new Button
+            {
+                WidthRequest = 60,
+                Text = "SELECT",
+                TextColor = Color.Blue,
+            };
+            layout.Children.Add(Select);
+            Select.Clicked += SelectClicked;
+
+            /************セレクトかける************************/
+            var query = UserModel008.selectUser();
+
+            foreach (var user in query)
+            {
+                //Userテーブルの名前列をLabelに書き出す
+                layout.Children.Add(new Label { Text = user.Id.ToString() });
+                layout.Children.Add(new Label { Text = user.Name });
+            }
+
+            Content = layout;
 
         }
     }
