@@ -117,7 +117,7 @@ namespace SQLiteSample777
             layout.Children.Add(Delete);
             Delete.Clicked += DeleteClicked;
 
-            //--------------------------------セレクトボタン------------------------------
+            //--------------------------------セレクトボタン-----------------------------
             var Select = new Button
             {
                 WidthRequest = 60,
